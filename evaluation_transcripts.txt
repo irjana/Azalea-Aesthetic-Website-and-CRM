@@ -1,0 +1,187 @@
+
+######################################################################
+# S1_all_info_upfront: All four fields given in a single opening message
+######################################################################
+USER: Hi, I'm Dritan, I need a cleaning and checkup, ideally within the next month, you can reach me at dritan@example.com
+ASSISTANT: Great to meet you, Dritan! Thank you for providing that information. I have most of what I need, but let me just confirm your contact method - would you prefer we reach you at dritan@example.com, or do you have a phone number you'd like us to use instead?
+USER: Sure, you can also reach me by phone at +355691112222.
+[LEAD SAVED]: {'name': 'Dritan', 'contact': 'dritan@example.com, +355691112222', 'need': 'Cleaning and checkup', 'timeline': 'Within the next month'}
+
+######################################################################
+# S2_gradual_info: Info volunteered gradually across several turns
+######################################################################
+USER: Hi, I've been having some tooth pain.
+ASSISTANT: I'm sorry to hear you're experiencing tooth pain. I'd like to help you get in touch with our team at Azalea so they can assist you properly.
+
+Can you tell me a bit more about what you're looking for? Are you seeking a dental consultation or examination to address this tooth pain?
+USER: My name is Elira.
+ASSISTANT: Nice to meet you, Elira! Thank you for sharing that.
+
+Before I get your contact information, could you tell me a bit more about what you need? Are you looking for a consultation to address your tooth pain, or is there a specific dental service you're interested in?
+USER: You can reach me at elira@example.com.
+ASSISTANT: Thank you for sharing that, Elira. I appreciate it.
+
+Before we finalize your information, I'd like to understand your needs a bit better. What specifically are you looking for help with? Is it a consultation for your tooth pain, or another dental service?
+USER: I'd like to come in sometime in the next two weeks.
+ASSISTANT: Great, thank you for letting me know your timeline. That helps us plan accordingly.
+
+Now, to better assist you, could you clarify what your main need is? Are you looking for a consultation to address your tooth pain, or is there a specific dental treatment you're interested in?
+USER: It's just general tooth pain, I'd like it looked at.
+[LEAD SAVED]: {'name': 'Elira', 'contact': 'elira@example.com', 'need': 'General tooth pain consultation', 'timeline': 'Next two weeks'}
+
+######################################################################
+# S3_vague_timeline: User gives a vague, non-specific timeline
+######################################################################
+USER: Hi, I'm Marco and I'm interested in teeth whitening.
+ASSISTANT: Hello Marco! Thank you for reaching out. It's great to hear you're interested in teeth whitening.
+
+To better assist you and ensure someone from our team can help you with the details, I'd like to collect a few pieces of information. Let me start with your contact information - could you please share your phone number or email address?
+USER: You can reach me at marco@example.com.
+ASSISTANT: Perfect, Marco! I have your email as marco@example.com.
+
+Now, could you please let me know your preferred timeline? Are you looking to get the teeth whitening done soon, or do you have a specific timeframe in mind?
+USER: I'm not really sure when, maybe sometime this year.
+[LEAD SAVED]: {'name': 'Marco', 'contact': 'marco@example.com', 'need': 'Teeth whitening', 'timeline': 'Sometime this year'}
+
+######################################################################
+# S4_one_refusal_then_given: User initially declines contact info, then provides it
+######################################################################
+USER: Hi, I'm Sara, I need a root canal consultation soon.
+ASSISTANT: Hello Sara, great to meet you! Thank you for reaching out to us about your root canal consultation.
+
+Before we proceed, I'd like to confirm a few details. Could you tell me a bit more about what's been going on? Are you experiencing tooth pain or other symptoms that led you to seek a root canal consultation?
+USER: I'd rather not share that.
+ASSISTANT: That's completely fine, Sara. I understand. Let me move forward with getting your information so we can help you with your consultation.
+
+Could you please provide me with your contact information? A phone number or email address would work best so our team can reach out to you to schedule your root canal consultation.
+USER: Okay fine, it's sara@example.com.
+ASSISTANT: Perfect, thank you for sharing that, Sara. I have your email as sara@example.com.
+
+Now, when would you ideally like to come in for your root canal consultation? Are you looking to schedule something soon, within a week or two, or do you have a different timeframe in mind?
+USER: Let's say sometime next week.
+[LEAD SAVED]: {'name': 'Sara', 'contact': 'sara@example.com', 'need': 'Root canal consultation', 'timeline': 'Next week'}
+
+######################################################################
+# S5_two_refusals_declined: User refuses contact info twice - should end with contact='declined'
+######################################################################
+USER: Hi, I'm Blerta, I want braces for myself - I've been wanting to straighten my teeth for a while.
+ASSISTANT: Hi Blerta! Thank you for reaching out. It's great to hear that you're interested in straightening your teeth with braces. That's a wonderful step toward improving your smile.
+
+Before we proceed, I'd love to learn a bit more about your situation. Could you tell me your full name please?
+USER: I'd rather not share my phone or email right now.
+ASSISTANT: I understand your concern, Blerta. However, I do need to collect some basic contact information so that our team at Azalea can reach out to you with more details about your braces treatment and answer any questions you may have.
+
+Could you share either a phone number or email address with us? This will help ensure you get the personalized care and information you deserve.
+USER: I still don't want to share that.
+[LEAD SAVED]: {'name': 'Blerta', 'contact': 'Not provided', 'need': 'Braces for teeth straightening', 'timeline': 'Not specified'}
+
+######################################################################
+# S6_offtopic_as_need: Off-topic content given as the answer to the 'need' question
+######################################################################
+USER: I want to build a house
+ASSISTANT: I appreciate you reaching out, but I'm here to help specifically with dental care inquiries. I'm not able to assist with topics outside of dentistry.
+
+However, if you have any dental needs or questions about dental services, I'd be happy to help! Do you have any dental concerns I can assist you with today?
+USER: Okay, actually I need a dental cleaning, my name is Laura.
+ASSISTANT: Great! I'm glad you reached out, Laura. A dental cleaning is a wonderful way to maintain your oral health.
+
+To help you get scheduled, I'll need to collect a bit of information. Let me start by asking: do you have a preferred timeline for when you'd like to come in for your cleaning? For example, are you looking to schedule something this week, next week, or do you have a specific timeframe in mind?
+USER: laura@example.com
+ASSISTANT: Thank you for sharing that email address, Laura. I'll make sure to note that down.
+
+Now, regarding the timeline - when would you prefer to come in for your dental cleaning? Are you looking to schedule something soon, like this week or next week, or do you have a different timeframe in mind?
+USER: Sometime next week works for me.
+ASSISTANT: Perfect! Next week works great. Now I just need one more piece of information to complete your details.
+
+Could you please provide a phone number where we can reach you? This will help our team contact you to confirm your appointment.
+[FALLBACK MESSAGE USED - scripted turns exhausted]
+USER: Just to make sure everything is clear: my name is Laura, I need cleaning, you can reach me at laura@example.com, my timeline is week.
+ASSISTANT: Thank you for confirming those details, Laura! Just to clarify - you mentioned your timeline is "week" - did you mean next week, or did you have something else in mind?
+
+Also, do you have a phone number we can use to reach you as well, or would you prefer we contact you only via email at laura@example.com?
+
+######################################################################
+# S7_offtopic_mid_flow: Off-topic content given later, as the answer to a different pending question
+######################################################################
+USER: Hi, I'm Laura and I need a cleaning.
+ASSISTANT: Hello Laura! Thank you for reaching out. I'm glad to help you with your cleaning appointment.
+
+Before we proceed, could you please provide me with your contact information? A phone number or email address would be great so our team can get back to you.
+USER: I want to build a house
+ASSISTANT: I appreciate you sharing that, but I'm here specifically to help with dental care services. I'm not able to assist with topics outside of dentistry.
+
+Now, back to your cleaning appointment - could you please share your contact information? A phone number or email address would help our team reach you to confirm your appointment.
+USER: Sorry, laura@example.com, and sometime next month.
+[LEAD SAVED]: {'name': 'Laura', 'contact': 'laura@example.com', 'need': 'cleaning', 'timeline': 'sometime next month'}
+
+######################################################################
+# S8_borderline_not_offtopic: A question that sounds tangential but is legitimately dental-related - guardrail should NOT block it
+######################################################################
+USER: Hi, I'm Enkel, do you take insurance for dental work?
+ASSISTANT: Hello Enkel! Thanks for reaching out to us. That's a great question about insurance. For specific details about insurance coverage and payment options, our team at Azalea would be best positioned to discuss that with you directly when we connect.
+
+Before we do that, I'd like to learn a bit more about what brings you in today. What dental care needs do you have, or what would you like to address?
+USER: Okay great, I need a checkup, reachable at enkel@example.com, sometime this month.
+ASSISTANT: Wonderful! I'm glad to hear you're looking to schedule a checkup. I have your email address and your preferred timeline, which is great.
+
+To make sure we have everything we need, could I please get your full name for the appointment?
+USER: Sure, it's +355693334444.
+ASSISTANT: I appreciate that, but I actually need your full name for the appointment records. Could you please share your full name with me?
+[FALLBACK MESSAGE USED - scripted turns exhausted]
+USER: Just to make sure everything is clear: my name is Enkel, I need checkup, you can reach me at enkel@example.com, my timeline is month.
+[LEAD SAVED]: {'name': 'Enkel', 'contact': 'enkel@example.com', 'need': 'Checkup', 'timeline': 'This month'}
+
+######################################################################
+# S9_italian_full_conversation: Full conversation conducted in Italian
+######################################################################
+USER: Ciao, sono Marco e ho bisogno di una pulizia dentale.
+ASSISTANT: Buongiorno Marco! Grazie per averci contattato. Sono felice di sentire che hai individuato già di cosa hai bisogno.
+
+Prima di procedere, mi piacerebbe raccogliere alcune informazioni per aiutarti al meglio. Qual è il tuo numero di telefono o il tuo indirizzo email per contattarti?
+USER: Il mio numero e marco.it@example.com
+ASSISTANT: Perfetto, grazie Marco! Ho annotato la tua email: marco.it@example.com
+
+Ora mi piacerebbe sapere: in che periodo ti piacerebbe effettuare la pulizia dentale? Preferisci nelle prossime settimane, entro il prossimo mese, o hai un'altra tempistica in mente?
+USER: Diciamo entro un mese.
+[LEAD SAVED]: {'name': 'Marco', 'contact': 'marco.it@example.com', 'need': 'Pulizia dentale', 'timeline': 'Entro un mese'}
+
+######################################################################
+# S10_informal_name_then_full_name: User gives a nickname first; bot asks for a full name (accepted behavior) and receives one
+######################################################################
+USER: Hey, just call me J, I need a filling replaced.
+ASSISTANT: Great to hear from you, J! A filling replacement is something we can definitely help with.
+
+To better assist you, could you please provide your full name for our records?
+USER: j@example.com, sometime in the next few weeks.
+ASSISTANT: Thanks for sharing that information, J. I have your email as j@example.com and your preferred timeline as the next few weeks.
+
+Before we proceed, I need to get your full name for our records. What's your complete name?
+USER: It's Jonida Krasniqi.
+[LEAD SAVED]: {'name': 'Jonida Krasniqi', 'contact': 'j@example.com', 'need': 'Filling replacement', 'timeline': 'Next few weeks'}
+
+######################################################################
+# S11_multiple_needs: User mentions more than one need in the same message
+######################################################################
+USER: Hi, I'm Ana, I need both a cleaning and a whitening consultation.
+ASSISTANT: Hi Ana! It's great to meet you. Thank you for reaching out to us.
+
+So I understand you're interested in both a cleaning and a whitening consultation - that's wonderful. Before we get you set up, I'd like to collect a few details to make sure we can best assist you.
+
+What would be your preferred timeline for scheduling these consultations? Are you looking to come in soon, or do you have a specific timeframe in mind?
+USER: ana@example.com, flexible on timing.
+ASSISTANT: Thank you for that information, Ana. I appreciate you sharing your email address and letting me know you're flexible with timing.
+
+Just to clarify, I still need to get your phone number or confirm that email is your preferred contact method. Which would you prefer we use to reach you - your email at ana@example.com, or would you also like to provide a phone number?
+USER: Let's say sometime next month then.
+ASSISTANT: Perfect, Ana. So next month works for your timeline - that's helpful to know.
+
+Before we finalize everything, I just need to confirm your contact information. Should we use ana@example.com to reach you, or would you prefer to provide a phone number as well?
+[FALLBACK MESSAGE USED - scripted turns exhausted]
+USER: Just to make sure everything is clear: my name is Ana, I need cleaning, you can reach me at ana@example.com, my timeline is month.
+[LEAD SAVED]: {'name': 'Ana', 'contact': 'ana@example.com', 'need': 'cleaning and whitening consultation', 'timeline': 'next month'}
+
+######################################################################
+# S12_rambling_single_message: One long, unstructured message containing all info at once
+######################################################################
+USER: hii so basically ive had this filling that keeps coming loose and its been annoying me for weeks now, im hoping to get it looked at pretty soon like this week if possible, im ana koci by the way and you can just email me at ana.koci@example.com
+[LEAD SAVED]: {'name': 'Ana Koci', 'contact': 'ana.koci@example.com', 'need': 'Loose filling examination and repair', 'timeline': 'This week'}

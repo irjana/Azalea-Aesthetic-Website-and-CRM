@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Azalea Aesthetic — Dental Care &amp; Aesthetic Treatments in Tirana</title>
+<style>
+  :root {
+    --purple: #7b3991;
+    --purple-dark: #5c2c6e;
+    --purple-darker: #46215a;
+    --purple-light: #a769c0;
+    --purple-tint: #f3ecf6;
+    --surface: #f5f7f9;
+    --white: #ffffff;
+    --text: #2b2b2f;
+    --muted: #6b6b76;
+    --whatsapp: #25d366;
+    --radius: 14px;
+    --shadow: 0 10px 30px rgba(70, 33, 90, 0.10);
+    --shadow-sm: 0 4px 14px rgba(70, 33, 90, 0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  section { padding: 88px 0; }
+  .section-tag {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--purple);
+    background: var(--purple-tint);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  h1, h2, h3, h4 { line-height: 1.25; font-weight: 700; }
+  h2 {
+    font-size: clamp(28px, 3.4vw, 38px);
+    margin-bottom: 14px;
+  }
+  .section-intro {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+  .section-head { text-align: center; }
+  .section-head .section-intro { margin-left: auto; margin-right: auto; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--white); color: var(--purple); box-shadow: var(--shadow-sm); }
+  .btn-primary:hover { box-shadow: var(--shadow); }
+  .btn-solid { background: var(--purple); color: var(--white); }
+  .btn-solid:hover { background: var(--purple-dark); }
+  .btn-outline { border-color: var(--purple); color: var(--purple); }
+  .btn-outline:hover { background: var(--purple); color: var(--white); }
+
+  /* Top info bar */
+  .topbar {
+    background: var(--purple-darker);
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+  }
+  .topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .topbar-item { display: flex; align-items: center; gap: 6px; }
+  .topbar svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* Header / nav */
+  header.site-header {
+    background: var(--purple);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 0.03em;
+  }
+  .logo svg { width: 30px; height: 30px; }
+  nav.main-nav ul {
+    display: flex;
+    gap: 30px;
+  }
+  nav.main-nav a {
+    color: rgba(255,255,255,0.88);
+    font-weight: 500;
+    font-size: 15px;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.main-nav a:hover,
+  nav.main-nav a.active { color: var(--white); border-color: var(--white); }
+  .nav-cta { display: flex; align-items: center; gap: 14px; }
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+  }
+  .menu-toggle svg { width: 28px; height: 28px; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(160deg, var(--purple) 0%, var(--purple-dark) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    padding: 90px 0 110px;
+  }
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .hero-circle.c1 { width: 420px; height: 420px; top: -140px; right: -60px; }
+  .hero-circle.c2 { width: 160px; height: 160px; bottom: -60px; right: 320px; background: rgba(255,255,255,0.06); }
+  .hero h1 {
+    font-size: clamp(34px, 4.6vw, 52px);
+    margin-bottom: 18px;
+  }
+  .hero p.lead {
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-image-wrap {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.25);
+    aspect-ratio: 4 / 3.2;
+  }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .trust-strip {
+    background: var(--white);
+    border-top: 1px solid #eee;
+  }
+  .trust-strip .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--purple-dark);
+    font-size: 15px;
+  }
+  .trust-item svg { width: 20px; height: 20px; color: var(--purple); flex-shrink: 0; }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .about-grid img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    width: 100%;
+  }
+  .value-list { margin-top: 24px; display: grid; gap: 16px; }
+  .value-item { display: flex; gap: 14px; align-items: flex-start; }
+  .value-item .icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--purple-tint); color: var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .value-item .icon svg { width: 20px; height: 20px; }
+  .value-item h4 { font-size: 16px; margin-bottom: 2px; }
+  .value-item p { color: var(--muted); font-size: 14.5px; }
+
+  /* alt section bg */
+  .bg-surface { background: var(--surface); }
+
+  /* Services grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .service-card .icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: var(--purple-tint); color: var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .service-card .icon svg { width: 24px; height: 24px; }
+  .service-card h3 { font-size: 18px; margin-bottom: 10px; }
+  .service-card p { color: var(--muted); font-size: 14.5px; margin-bottom: 16px; }
+  .service-card a { color: var(--purple); font-weight: 600; font-size: 14px; }
+
+  /* Steps (hair transplant) */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    counter-reset: step;
+  }
+  .step-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+  .step-card .num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--purple);
+    color: var(--white);
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+  .step-card h4 { font-size: 16px; margin-bottom: 8px; }
+  .step-card p { color: var(--muted); font-size: 14px; }
+
+  /* Dental tourism */
+  .tourism-wrap {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+  .tourism-wrap img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/10.5;
+  }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+  .benefit-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+  }
+  .benefit-card .icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: var(--white); color: var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px; box-shadow: var(--shadow-sm);
+  }
+  .benefit-card .icon svg { width: 22px; height: 22px; }
+  .benefit-card h4 { font-size: 15.5px; margin-bottom: 8px; }
+  .benefit-card p { color: var(--muted); font-size: 13.8px; }
+  .tourism-cta { text-align: center; margin-top: 48px; }
+
+  /* Testimonials */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    box-shadow: var(--shadow-sm);
+  }
+  .testimonial-card .stars { color: var(--purple); margin-bottom: 14px; font-size: 15px; letter-spacing: 2px; }
+  .testimonial-card p.quote { font-size: 15px; color: var(--text); margin-bottom: 20px; }
+  .testimonial-person { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--purple-tint); color: var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+  }
+  .testimonial-person h5 { font-size: 14.5px; }
+  .testimonial-person span { font-size: 12.5px; color: var(--muted); }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+  .contact-info-card {
+    background: var(--purple);
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 34px;
+    margin-bottom: 22px;
+  }
+  .contact-info-card h3 { font-size: 19px; margin-bottom: 18px; }
+  .contact-line { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; font-size: 14.5px; }
+  .contact-line svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+  .contact-line:last-child { margin-bottom: 0; }
+  .map-embed {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    line-height: 0;
+  }
+  .map-embed iframe { width: 100%; height: 260px; border: 0; }
+  .contact-form {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 34px;
+  }
+  .contact-form h3 { font-size: 19px; margin-bottom: 6px; }
+  .contact-form p.hint { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label { font-size: 13px; font-weight: 600; color: var(--text); }
+  .form-field input, .form-field textarea {
+    border: 1px solid #dcdce2;
+    border-radius: 8px;
+    padding: 11px 13px;
+    font-size: 14.5px;
+    font-family: inherit;
+    background: var(--white);
+  }
+  .form-field textarea { resize: vertical; min-height: 90px; }
+  .contact-form .btn-solid { width: 100%; justify-content: center; margin-top: 4px; }
+
+  /* Footer */
+  footer.site-footer {
+    background: var(--purple-darker);
+    color: rgba(255,255,255,0.82);
+    padding: 60px 0 26px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 10px; color: var(--white); font-weight: 700; font-size: 19px; margin-bottom: 14px; }
+  .footer-logo svg { width: 26px; height: 26px; }
+  footer p.tagline { font-size: 14px; max-width: 280px; margin-bottom: 18px; }
+  .footer-social { display: flex; gap: 12px; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .footer-social a:hover { background: var(--purple); }
+  .footer-social svg { width: 16px; height: 16px; }
+  footer h4 { color: var(--white); font-size: 15px; margin-bottom: 16px; }
+  footer ul li { margin-bottom: 10px; font-size: 14px; }
+  footer ul li a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  /* Chat widget */
+  .chat-widget { position: fixed; bottom: 24px; right: 24px; z-index: 60; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+  .chat-launcher {
+    background: var(--purple);
+    color: var(--white);
+    width: 56px; height: 56px;
+    border: none;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+    flex-shrink: 0;
+  }
+  .chat-launcher:hover { transform: scale(1.08); background: var(--purple-dark); }
+  .chat-launcher svg { width: 26px; height: 26px; position: absolute; transition: opacity 0.15s ease, transform 0.15s ease; }
+  .chat-launcher .icon-close { opacity: 0; transform: rotate(-45deg); }
+  .chat-launcher .icon-chat { opacity: 1; transform: rotate(0deg); }
+  .chat-widget.open .chat-launcher .icon-close { opacity: 1; transform: rotate(0deg); }
+  .chat-widget.open .chat-launcher .icon-chat { opacity: 0; transform: rotate(45deg); }
+
+  .chat-panel {
+    width: 350px;
+    max-width: calc(100vw - 48px);
+    height: 500px;
+    max-height: calc(100vh - 140px);
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(70,33,90,0.28);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .chat-widget.open .chat-panel { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+  .chat-panel-header {
+    background: var(--purple);
+    color: var(--white);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .chat-panel-header strong { display: block; font-size: 15px; }
+  .chat-panel-header .chat-sub { display: block; font-size: 12px; opacity: 0.8; margin-top: 1px; }
+  .chat-header-actions { display: flex; align-items: center; gap: 10px; }
+  .chat-header-actions select {
+    font-size: 12px; padding: 4px 6px; border-radius: 6px; border: none; background: rgba(255,255,255,0.18); color: var(--white);
+  }
+  .chat-header-actions select option { color: var(--text); }
+  .chat-header-actions button {
+    background: none; border: none; color: var(--white); font-size: 20px; line-height: 1; cursor: pointer; opacity: 0.85;
+  }
+  .chat-header-actions button:hover { opacity: 1; }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--white);
+  }
+  .chat-bubble { max-width: 82%; padding: 10px 13px; border-radius: 14px; font-size: 13.5px; line-height: 1.45; white-space: pre-wrap; }
+  .chat-bubble.assistant { align-self: flex-start; background: var(--surface); color: var(--text); border-bottom-left-radius: 4px; }
+  .chat-bubble.user { align-self: flex-end; background: var(--purple); color: var(--white); border-bottom-right-radius: 4px; }
+  .chat-bubble.system-note { align-self: center; background: #fff3cd; color: #7a5b00; font-size: 12.5px; text-align: center; }
+  .chat-bubble.lead-saved { align-self: center; background: #e6f4ea; color: #1e6b34; font-size: 12.5px; border: 1px solid #b7e1c2; max-width: 95%; }
+  .chat-bubble.lead-saved strong { display: block; margin-bottom: 4px; }
+  .chat-typing { align-self: flex-start; color: var(--muted); font-size: 12.5px; font-style: italic; padding: 0 4px; }
+
+  .chat-input-row { display: flex; gap: 8px; padding: 12px; border-top: 1px solid #ececec; flex-shrink: 0; }
+  .chat-input-row input {
+    flex: 1; padding: 10px 12px; border: 1px solid #dcdce2; border-radius: 8px; font-size: 13.5px; font-family: inherit;
+  }
+  .chat-input-row input:disabled { background: var(--surface); }
+  .chat-input-row button {
+    background: var(--purple); color: var(--white); border: none; border-radius: 8px; padding: 0 16px; font-size: 13.5px; cursor: pointer;
+  }
+  .chat-input-row button:disabled { background: #b9b9c2; cursor: not-allowed; }
+
+  @media (max-width: 480px) {
+    .chat-widget { bottom: 16px; right: 16px; }
+    .chat-panel { width: calc(100vw - 32px); height: calc(100vh - 120px); }
+  }
+
+  @media (max-width: 900px) {
+    section { padding: 64px 0; }
+    .hero .container { grid-template-columns: 1fr; }
+    .hero-image-wrap { order: -1; max-width: 460px; }
+    .about-grid, .tourism-wrap, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav.main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 78%; max-width: 320px;
+      background: var(--purple-dark); padding: 100px 30px 30px; transition: right 0.25s ease; z-index: 55; }
+    nav.main-nav.open { right: 0; }
+    nav.main-nav ul { flex-direction: column; gap: 22px; }
+    .menu-toggle { display: block; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .services-grid, .steps-grid, .benefits-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .topbar .container { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>+355 67 608 4446 &nbsp;·&nbsp; 24/7 Emergency Line</span>
+    </div>
+    <div class="topbar-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>Monday – Friday: 9 AM – 9 PM</span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="#home" class="logo">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.8 2 2.6 4 2.6 5.8 0 1.6-1.1 2.7-2.6 2.7S9.4 9.4 9.4 7.8C9.4 6 10.2 4 12 2zm7 7c2 1 3.7 2.3 4.6 3.9 1 1.8.6 3.5-.9 4.3-1.4.8-3.1.1-4.1-1.7-.9-1.6-.7-4.2.4-6.5zM5 9c-1.1 2.3-1.3 4.9-.4 6.5C5.6 17.3 7.3 18 8.7 17.2c1.5-.8 1.9-2.5.9-4.3C8.7 11.3 7 10 5 9zm7 5.5c1.9 0 3.6.8 4.7 2.3 1.2 1.6 1.1 3.5-.2 4.6-1.4 1.2-3.6 1-5-.5a5 5 0 0 1-1-.9 5 5 0 0 1-1 .9c-1.4 1.5-3.6 1.7-5 .5-1.3-1.1-1.4-3-.2-4.6 1.1-1.5 2.8-2.3 4.7-2.3.6 0 1.2.1 1 0 .2.1.4 0 1 0z"/></svg>
+      AZALEA
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#aesthetic">Azalea Aesthetic</a></li>
+        <li><a href="#hair-transplant">Hair Transplant</a></li>
+        <li><a href="#dental-tourism">Dental Tourism</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary" style="padding:10px 20px; font-size:14px;">Book an Appointment</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-circle c1"></div>
+  <div class="hero-circle c2"></div>
+  <div class="container">
+    <div>
+      <h1>Confident Smiles, Natural Results</h1>
+      <p class="lead">Dental care and aesthetic treatments in Lushnje, trusted by patients from Albania and across Europe. Free online consultations, every day of the week.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
+        <a href="tel:+355676084446" class="btn" style="border:2px solid rgba(255,255,255,0.5); color:#fff;">Call +355 67 608 4446</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <img src="https://azalea-aesthetic.com/wp-content/uploads/2025/09/azaaa.png" alt="Azalea Aesthetic clinic" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+      Internationally Trained Dentists
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+      1000+ Patients Treated
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+      English · Italian · Albanian Support
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      24/7 Emergency Line
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <img src="https://azalea-aesthetic.com/wp-content/uploads/2023/11/DSC08960-scaled.jpg" alt="Azalea Aesthetic clinic interior" loading="lazy" />
+      <div>
+        <span class="section-tag">About Us</span>
+        <h2>Outstanding Care, High-Quality Dentistry</h2>
+        <p class="section-intro" style="margin-bottom:0;">Our team is dedicated to helping every patient feel at home, including those with significant dental anxiety. We build long-term relationships with our patients in a relaxed, welcoming environment, focused on preserving your natural teeth and your oral health for life.</p>
+        <div class="value-list">
+          <div class="value-item">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div><h4>Patient-First Care</h4><p>A calm, judgement-free environment built for anxious and first-time patients.</p></div>
+          </div>
+          <div class="value-item">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 11-12h-7l1-8z"/></svg></div>
+            <div><h4>Modern Technology</h4><p>Internationally trained specialists using up-to-date equipment and techniques.</p></div>
+          </div>
+          <div class="value-item">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div><h4>Long-Term Relationships</h4><p>We plan care around your life, not just a single visit.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="aesthetic" class="bg-surface">
+  <div class="container section-head">
+    <span class="section-tag">Azalea Aesthetic</span>
+    <h2>Where Science Meets the Art of Beauty</h2>
+    <p class="section-intro">Advanced aesthetic treatments tailored to bring out your natural radiance — combining proven techniques with a personalised approach for safe, lasting results.</p>
+  </div>
+  <div class="container">
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21C7 17 3 13.5 3 9.5 3 6.5 5.5 4 8.5 4c1.7 0 3.1.9 3.9 2.2C13.2 4.9 14.6 4 16.3 4 19.3 4 21.8 6.5 21.8 9.5 21.8 13.5 17 17 12 21z"/></svg></div>
+        <h3>Mommy Makeover</h3>
+        <p>A tailored combination of procedures — including breast lift and abdominoplasty — designed to help mothers restore their pre-pregnancy silhouette in a single recovery phase.</p>
+        <a href="#contact">Book a Consultation →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 3-1 3 2 5 2 3-2 5-2 3 1 3 1M4 10s1-1 3-1 3 2 5 2 3-2 5-2 3 1 3 1"/></svg></div>
+        <h3>Hair Transplant</h3>
+        <p>Modern, minimally invasive FUE/FUT techniques restore natural, permanent hair growth tailored to each patient's needs. See the full process below.</p>
+        <a href="#hair-transplant">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M4 12h16"/></svg></div>
+        <h3>Breast Augmentation</h3>
+        <p>Modern, safe implants for a natural result in volume and shape, personalised to each patient for confidence and balance.</p>
+        <a href="#contact">Book a Consultation →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/></svg></div>
+        <h3>Liposuction</h3>
+        <p>Removes localised fat deposits to reshape the body in a harmonious, long-lasting way, using modern and safe techniques.</p>
+        <a href="#contact">Book a Consultation →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9c0-1-1-1-1 0a8 8 0 1 1-8-9c1 0 1-1 0-1z"/></svg></div>
+        <h3>Facelift</h3>
+        <p>Restores a fresh, natural look by gently addressing skin laxity, for a tonic and harmonious appearance.</p>
+        <a href="#contact">Book a Consultation →</a>
+      </div>
+      <div class="service-card" style="background:var(--purple); color:#fff; display:flex; flex-direction:column; justify-content:center;">
+        <h3 style="color:#fff;">Not sure which treatment is right for you?</h3>
+        <p style="color:rgba(255,255,255,0.85);">Book a free consultation and our team will guide you through the best options for your goals.</p>
+        <a href="#contact" class="btn btn-primary" style="align-self:flex-start; margin-top:6px;">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hair-transplant">
+  <div class="container section-head">
+    <span class="section-tag">Hair Transplant</span>
+    <h2>FUE / FUT Hair Transplant</h2>
+    <p class="section-intro">A clear, four-step process from initial assessment to full regrowth over six months.</p>
+  </div>
+  <div class="container">
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="num">1</div>
+        <h4>Treatment Mapping</h4>
+        <p>The doctor examines the scalp and marks the treatment area to ensure precise, natural-looking results.</p>
+      </div>
+      <div class="step-card">
+        <div class="num">2</div>
+        <h4>Follicle Extraction</h4>
+        <p>Healthy follicles are carefully extracted, typically from the back or sides of the scalp, to minimise discomfort.</p>
+      </div>
+      <div class="step-card">
+        <div class="num">3</div>
+        <h4>Follicle Placement</h4>
+        <p>Follicles are implanted into thinning areas with careful attention to angle, depth, and density.</p>
+      </div>
+      <div class="step-card">
+        <div class="num">4</div>
+        <h4>6-Month Regrowth</h4>
+        <p>Transplanted follicles establish and grow, blending naturally with your existing hair over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dental-tourism" class="bg-surface">
+  <div class="container">
+    <div class="tourism-wrap">
+      <img src="https://azalea-aesthetic.com/wp-content/uploads/2024/07/dental-tourism-1024x576-1.png" alt="Dental tourism in Albania" loading="lazy" />
+      <div>
+        <span class="section-tag">Dental Tourism</span>
+        <h2>Dental Tourism in Albania</h2>
+        <p class="section-intro" style="margin-bottom:0;">Combine top-quality dental and aesthetic care with an unforgettable trip. Albania offers modern clinics, significant savings, and a country well worth exploring.</p>
+      </div>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg></div>
+        <h4>High-Quality Care</h4>
+        <p>Modern clinics with internationally trained professionals delivering exceptional results.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h4>Affordability</h4>
+        <p>Treatments typically cost 50–70% less than in Western Europe or the US, with no compromise on quality.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 0 0 1 1h3m6 0h3a1 1 0 0 0 1-1V10"/></svg></div>
+        <h4>Tourism Opportunities</h4>
+        <p>Explore Tirana, Butrint, and Gjirokastër, plus pristine beaches and rich Albanian culture.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 19.5l19-7-19-7 4.5 7-4.5 7z"/></svg></div>
+        <h4>Convenience</h4>
+        <p>Frequent international flights to Tirana, with packages covering transfers, stays, and tours.</p>
+      </div>
+    </div>
+    <div class="tourism-cta">
+      <a href="#contact" class="btn btn-solid">Plan Your Visit</a>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container section-head">
+    <span class="section-tag">Testimonials</span>
+    <h2>Sharing Is Caring</h2>
+    <p class="section-intro">What patients say after their treatment at Azalea Aesthetic.</p>
+  </div>
+  <div class="container">
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"So happy with my recent dental treatment. Thank you for making me feel so comfortable throughout the entire process."</p>
+        <div class="testimonial-person">
+          <div class="avatar">SC</div>
+          <div><h5>Simon Cowan</h5><span>2,000 FUE Grafts</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"I cannot recommend Azalea enough for implant work — you always know you're in safe hands."</p>
+        <div class="testimonial-person">
+          <div class="avatar">DG</div>
+          <div><h5>David Graham</h5><span>3,500 FUT Grafts</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"The team is fantastic with my kids and makes coming to the dentist an enjoyable experience."</p>
+        <div class="testimonial-person">
+          <div class="avatar">KT</div>
+          <div><h5>Kevin Thomas</h5><span>Returning Patient</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="bg-surface">
+  <div class="container section-head">
+    <span class="section-tag">Contact</span>
+    <h2>Write to Our Office</h2>
+    <p class="section-intro">Reach out and our team will get back to you about the treatment you're interested in.</p>
+  </div>
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-card">
+          <h3>Contact Details</h3>
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+355 67 608 4446 (24/7 Emergency)</span>
+          </div>
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Lushnje, Albania</span>
+          </div>
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>Monday – Saturday: 9AM – 9PM<br/>Sunday: Closed</span>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d384419.6962442826!2d19.47252043448557!3d41.17208421686081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13500524df052ac5%3A0x7b8d125cc4cb21e3!2sMy%20Dental%20Tourism!5e0!3m2!1sen!2s!4v1686655810967!5m2!1sen!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send a Message</h3>
+        <p class="hint">Fill out the form and we'll get back to you shortly.</p>
+        <form onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-field"><label>Your Name</label><input type="text" placeholder="Jane Doe" /></div>
+            <div class="form-field"><label>Your Email</label><input type="email" placeholder="jane@email.com" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>Phone Number</label><input type="tel" placeholder="+355 ..." /></div>
+            <div class="form-field"><label>Subject</label><input type="text" placeholder="Dental consultation" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field full"><label>Message (optional)</label><textarea placeholder="Tell us a bit about what you're looking for..."></textarea></div>
+          </div>
+          <button type="submit" class="btn btn-solid">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.8 2 2.6 4 2.6 5.8 0 1.6-1.1 2.7-2.6 2.7S9.4 9.4 9.4 7.8C9.4 6 10.2 4 12 2zm7 7c2 1 3.7 2.3 4.6 3.9 1 1.8.6 3.5-.9 4.3-1.4.8-3.1.1-4.1-1.7-.9-1.6-.7-4.2.4-6.5zM5 9c-1.1 2.3-1.3 4.9-.4 6.5C5.6 17.3 7.3 18 8.7 17.2c1.5-.8 1.9-2.5.9-4.3C8.7 11.3 7 10 5 9zm7 5.5c1.9 0 3.6.8 4.7 2.3 1.2 1.6 1.1 3.5-.2 4.6-1.4 1.2-3.6 1-5-.5a5 5 0 0 1-1-.9 5 5 0 0 1-1 .9c-1.4 1.5-3.6 1.7-5 .5-1.3-1.1-1.4-3-.2-4.6 1.1-1.5 2.8-2.3 4.7-2.3.6 0 1.2.1 1 0 .2.1.4 0 1 0z"/></svg>
+          AZALEA
+        </div>
+        <p class="tagline">Dental care and aesthetic treatments in Lushnje — where science meets the art of beauty.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://twitter.com" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4 4 0 0 0 1.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4
+
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <ul>
+          <li>+355 67 608 4446</li>
+          <li>Lushnje, Albania</li>
+          <li>Mon – Sat: 9AM – 9PM</li>
+          <li>Sunday: Closed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Azalea Aesthetic. All rights reserved.</span>
+      <span><a href="#contact">Privacy Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="chat-widget" id="chatWidget">
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-panel-header">
+      <div>
+        <strong>Chat with us</strong>
+        <span class="chat-sub">Azalea Aesthetic Assistant</span>
+      </div>
+      <div class="chat-header-actions">
+        <select id="languageSelect" aria-label="Language">
+          <option value="English" selected>EN</option>
+          <option value="Italian">IT</option>
+        </select>
+        <button id="chatClose" aria-label="Close chat">&times;</button>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off" />
+      <button id="chatSend">Send</button>
+    </div>
+  </div>
+  <button class="chat-launcher" id="chatLauncher" aria-label="Open chat">
+    <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  menuToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+  document.querySelectorAll('nav.main-nav a').forEach(a => {
+    a.addEventListener('click', () => mainNav.classList.remove('open'));
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav.main-nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 120;
+      if (window.scrollY >= top) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+
+<script>
+  // Lead-capture chat widget, wired to the FastAPI backend built for this project.
+  // Point this at your running backend (uvicorn main:app --reload) before testing.
+  const CHAT_API_URL = "http://127.0.0.1:8000/chat";
+
+  const CHAT_GREETINGS = {
+    English: "Hi! Welcome to Azalea Aesthetics, how may I assist you today?",
+    Italian: "Ciao! Benvenuti da Azalea Aesthetics. Come posso aiutarvi oggi? ",
+  };
+  const CHAT_CLOSING = {
+    English: "Thanks! Someone from our team will be in touch soon.",
+    Italian: "Grazie! Qualcuno del nostro team ti contattera presto.",
+  }
+  const chatWidget = document.getElementById('chatWidget');
+  const chatLauncher = document.getElementById('chatLauncher');
+  const chatClose = document.getElementById('chatClose');
+  const chatMessagesEl = document.getElementById('chatMessages');
+  const chatInputEl = document.getElementById('chatInput');
+  const chatSendBtn = document.getElementById('chatSend');
+  const chatLanguageSelect = document.getElementById('languageSelect');
+
+  let chatSelectedLanguage = chatLanguageSelect.value;
+  let chatConversation = [{ role: 'assistant', content: CHAT_GREETINGS[chatSelectedLanguage] }];
+  let chatEnded = false;
+  let chatStarted = false;
+  let chatOpened = false;
+
+  function chatRenderBubble(role, text) {
+    const div = document.createElement('div');
+    div.className = 'chat-bubble ' + role;
+    div.textContent = text;
+    chatMessagesEl.appendChild(div);
+    chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+    return div;
+  }
+
+  function chatEscapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function chatRenderLeadSaved(lead) {
+    const div = document.createElement('div');
+    div.className = 'chat-bubble lead-saved';
+    div.innerHTML =
+      '<strong>Lead captured</strong>' +
+      'Name: ' + chatEscapeHtml(lead.name || '-') + '<br>' +
+      'Contact: ' + chatEscapeHtml(lead.contact || '-') + '<br>' +
+      'Need: ' + chatEscapeHtml(lead.need || '-') + '<br>' +
+      'Timeline: ' + chatEscapeHtml(lead.timeline || '-');
+    chatMessagesEl.appendChild(div);
+    chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+  }
+
+  function chatShowTyping() {
+    const div = document.createElement('div');
+    div.className = 'chat-typing';
+    div.id = 'chatTypingIndicator';
+    div.textContent = '...';
+    chatMessagesEl.appendChild(div);
+    chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+  }
+
+  function chatHideTyping() {
+    const el = document.getElementById('chatTypingIndicator');
+    if (el) el.remove();
+  }
+
+  function chatSetInputEnabled(enabled) {
+    chatInputEl.disabled = !enabled;
+    chatSendBtn.disabled = !enabled;
+  }
+
+  async function chatSendMessage() {
+    const text = chatInputEl.value.trim();
+    if (!text || chatEnded) return;
+
+    if (!chatStarted) {
+      chatStarted = true;
+      chatLanguageSelect.disabled = true;
+    }
+
+    chatRenderBubble('user', text);
+    chatConversation.push({ role: 'user', content: text });
+    chatInputEl.value = '';
+    chatSetInputEnabled(false);
+    chatShowTyping();
+
+    try {
+      const res = await fetch(CHAT_API_URL, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: chatConversation, language: chatSelectedLanguage }),
+      });
+
+      chatHideTyping();
+
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => ({}));
+        chatRenderBubble('system-note',
+          'Something went wrong talking to the assistant (' + res.status + '). ' +
+          (errBody.detail || 'Check that the backend server is running.'));
+        chatSetInputEnabled(true);
+        return;
+      }
+
+      const data = await res.json();
+
+      if (data.status === 'lead_saved') {
+        chatRenderLeadSaved(data.lead);
+        chatRenderBubble('assistant', CHAT_CLOSING[chatSelectedLanguage]);
+        chatEnded = true;
+        chatSetInputEnabled(false);
+        chatInputEl.placeholder = 'Conversation complete';
+      } else {
+        chatRenderBubble('assistant', data.reply);
+        chatConversation.push({ role: 'assistant', content: data.reply });
+        chatSetInputEnabled(true);
+        chatInputEl.focus();
+      }
+    } catch (err) {
+      chatHideTyping();
+      chatRenderBubble('system-note', 'Could not reach the backend at ' + CHAT_API_URL + '. Is uvicorn running?');
+      chatSetInputEnabled(true);
+    }
+  }
+
+  chatSendBtn.addEventListener('click', chatSendMessage);
+  chatInputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') chatSendMessage(); });
+
+  chatLanguageSelect.addEventListener('change', () => {
+    if (chatStarted) return;
+    chatSelectedLanguage = chatLanguageSelect.value;
+    chatMessagesEl.innerHTML = '';
+    chatConversation = [{ role: 'assistant', content: CHAT_GREETINGS[chatSelectedLanguage] }];
+    chatRenderBubble('assistant', CHAT_GREETINGS[chatSelectedLanguage]);
+  });
+
+  chatLauncher.addEventListener('click', () => {
+    chatOpened = !chatOpened;
+    chatWidget.classList.toggle('open', chatOpened);
+    if (chatOpened && chatMessagesEl.children.length === 0) {
+      chatRenderBubble('assistant', CHAT_GREETINGS[chatSelectedLanguage]);
+    }
+    if (chatOpened) chatInputEl.focus();
+  });
+
+  chatClose.addEventListener('click', () => {
+    chatOpened = false;
+    chatWidget.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>

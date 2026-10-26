@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Lead Dashboard</title>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --panel: #ffffff;
+    --accent: #2f5496;
+    --text: #1f2933;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+  }
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+  header small {
+    color: var(--muted);
+    display: block;
+    margin-top: 2px;
+    font-weight: 400;
+  }
+  .toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .toolbar input {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .toolbar button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .panel {
+    background: var(--panel);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead {
+    background: var(--accent);
+    color: white;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    vertical-align: top;
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr:hover {
+    background: #fafbfc;
+  }
+  .name-cell { font-weight: 600; }
+  .muted { color: var(--muted); font-size: 12px; }
+  select.status-select, select.assign-select {
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .status-new { color: #1f6feb; }
+  .status-contacted { color: #9a6700; }
+  .status-qualified { color: #1a7f37; }
+  .status-not-interested { color: #cf222e; }
+  .assign-select.unassigned { color: var(--muted); }
+  .assign-select.assigned { color: var(--text); font-weight: 600; }
+  .transcript-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--accent);
+  }
+  .transcript-row td {
+    background: #fafbfc;
+    white-space: pre-wrap;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 12px;
+    color: #374151;
+  }
+  .empty-state {
+    padding: 40px;
+    text-align: center;
+    color: var(--muted);
+  }
+  .error-banner {
+    background: #fff3cd;
+    color: #7a5b00;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    display: none;
+  }
+  .lang-badge {
+    font-size: 11px;
+    background: #eef1f5;
+    color: #374151;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .edit-input {
+    width: 100%;
+    padding: 5px 7px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-family: inherit;
+  }
+  .actions-cell { white-space: nowrap; }
+  .actions-cell button + button { margin-left: 6px; }
+
+  .stats-panel {
+    padding: 18px 20px;
+    margin-bottom: 16px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .stat-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .stat-card .value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-card .label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .breakdown-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .breakdown-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+  .breakdown-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 12.5px;
+  }
+  .breakdown-row .breakdown-label {
+    width: 90px;
+    flex-shrink: 0;
+    color: var(--text);
+  }
+  .breakdown-track {
+    flex: 1;
+    background: var(--bg);
+    border-radius: 4px;
+    height: 10px;
+    overflow: hidden;
+  }
+  .breakdown-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+  }
+  .breakdown-count {
+    width: 24px;
+    text-align: right;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  @media (max-width: 700px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .breakdown-cols { grid-template-columns: 1fr; }
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-card {
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 28px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  }
+  .modal-card h2 { font-size: 17px; margin: 0 0 16px; }
+  .modal-field { margin-bottom: 12px; }
+  .modal-field label { display: block; font-size: 12.5px; font-weight: 600; margin-bottom: 4px; }
+  .modal-field input, .modal-field select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-family: inherit;
+  }
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .modal-actions button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    cursor: pointer;
+    border: none;
+  }
+  .modal-actions .btn-cancel { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+  .modal-actions .btn-save { background: var(--accent); color: white; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header>
+    <div>
+      <h1>Lead Dashboard</h1>
+      <small>Captured by the AI chatbot &mdash; review, assign, edit, and update status here</small>
+    </div>
+  </header>
+
+  <div class="error-banner" id="errorBanner"></div>
+
+  <div class="panel stats-panel" id="statsPanel">
+    <div class="stats-grid" id="statsGrid"></div>
+    <div class="breakdown-cols">
+      <div>
+        <div class="breakdown-title">By Language</div>
+        <div id="languageBreakdown"></div>
+      </div>
+      <div>
+        <div class="breakdown-title">Last 7 Days</div>
+        <div id="dayBreakdown"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <input type="text" id="searchInput" placeholder="Search by name, contact, or need..." />
+    <button id="addLeadBtn">+ Add Lead</button>
+    <button id="refreshBtn">Refresh</button>
+  </div>
+
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Need</th>
+          <th>Timeline</th>
+          <th>Lang</th>
+          <th>Status</th>
+          <th>Assigned To</th>
+          <th>Captured</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="leadsBody"></tbody>
+    </table>
+    <div class="empty-state" id="emptyState" style="display:none;">No leads captured yet.</div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="addModalOverlay">
+  <div class="modal-card">
+    <h2>Add Lead Manually</h2>
+    <div class="modal-field"><label>Name</label><input type="text" id="addName" /></div>
+    <div class="modal-field"><label>Contact (phone or email)</label><input type="text" id="addContact" /></div>
+    <div class="modal-field"><label>Need</label><input type="text" id="addNeed" /></div>
+    <div class="modal-field"><label>Timeline</label><input type="text" id="addTimeline" /></div>
+    <div class="modal-field">
+      <label>Language</label>
+      <select id="addLanguage">
+        <option value="English" selected>English</option>
+        <option value="Italian">Italian</option>
+      </select>
+    </div>
+    <div class="modal-field">
+      <label>Status</label>
+      <select id="addStatus">
+        <option value="new" selected>new</option>
+        <option value="contacted">contacted</option>
+        <option value="qualified">qualified</option>
+        <option value="not interested">not interested</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="addCancelBtn">Cancel</button>
+      <button class="btn-save" id="addSaveBtn">Add Lead</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API_BASE = "http://127.0.0.1:8000";
+  const STATUSES = ["new", "contacted", "qualified", "not interested"];
+
+  // Placeholder team list - replace these with your actual sales agents'
+  // names. "Unassigned" is always kept as the first, default option.
+  const AGENTS = ["Unassigned", "Genta", "Elona", "Ermir", "Petrit", "Sara", "Klea", "Joni"];
+
+  let allLeads = [];
+  let openTranscriptId = null;
+  let editingId = null;
+
+  const tbody = document.getElementById("leadsBody");
+  const emptyState = document.getElementById("emptyState");
+  const errorBanner = document.getElementById("errorBanner");
+  const searchInput = document.getElementById("searchInput");
+  const refreshBtn = document.getElementById("refreshBtn");
+  const addLeadBtn = document.getElementById("addLeadBtn");
+  const addModalOverlay = document.getElementById("addModalOverlay");
+  const addCancelBtn = document.getElementById("addCancelBtn");
+  const addSaveBtn = document.getElementById("addSaveBtn");
+
+  function showError(msg) {
+    errorBanner.textContent = msg;
+    errorBanner.style.display = "block";
+  }
+
+  function clearError() {
+    errorBanner.style.display = "none";
+    errorBanner.textContent = "";
+  }
+
+  function escapeHtml(str) {
+    const d = document.createElement("div");
+    d.textContent = str == null ? "" : String(str);
+    return d.innerHTML;
+  }
+
+  function statusClass(status) {
+    return "status-" + String(status).replace(/\s+/g, "-");
+  }
+
+  function formatDate(iso) {
+    if (!iso) return "-";
+    // SQLite CURRENT_TIMESTAMP is UTC, "YYYY-MM-DD HH:MM:SS"
+    const d = new Date(iso.replace(" ", "T") + "Z");
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleString();
+  }
+
+  async function loadLeads() {
+    clearError();
+    try {
+      const res = await fetch(API_BASE + "/leads");
+      if (!res.ok) throw new Error("Server responded with " + res.status);
+      allLeads = await res.json();
+      render();
+    } catch (err) {
+      showError("Could not load leads from " + API_BASE + "/leads. Is uvicorn running?");
+    }
+  }
+
+  async function loadStats() {
+    try {
+      const res = await fetch(API_BASE + "/leads/stats");
+      if (!res.ok) throw new Error("Server responded with " + res.status);
+      const stats = await res.json();
+      renderStats(stats);
+    } catch (err) {
+      // Non-critical - the lead table above still works without stats.
+      document.getElementById("statsGrid").innerHTML = "";
+      document.getElementById("languageBreakdown").innerHTML = "";
+      document.getElementById("dayBreakdown").innerHTML = "";
+    }
+  }
+
+  function renderStats(stats) {
+    const byStatus = stats.by_status || {};
+    const statsGrid = document.getElementById("statsGrid");
+    const cards = [
+      { label: "Total Leads", value: stats.total || 0 },
+      { label: "New", value: byStatus["new"] || 0 },
+      { label: "Contacted", value: byStatus["contacted"] || 0 },
+      { label: "Qualified", value: byStatus["qualified"] || 0 },
+      { label: "Not Interested", value: byStatus["not interested"] || 0 },
+    ];
+    statsGrid.innerHTML = cards
+      .map(
+        (c) =>
+          '<div class="stat-card"><div class="value">' + c.value +
+          '</div><div class="label">' + c.label + "</div></div>"
+      )
+      .join("");
+
+    renderBreakdown("languageBreakdown", stats.by_language || {});
+    renderBreakdown("dayBreakdown", stats.by_day || {});
+  }
+
+  function renderBreakdown(containerId, dataObj) {
+    const container = document.getElementById(containerId);
+    const entries = Object.entries(dataObj);
+    if (entries.length === 0) {
+      container.innerHTML = '<div class="muted">No data yet.</div>';
+      return;
+    }
+    const max = Math.max(...entries.map(([, count]) => count), 1);
+    container.innerHTML = entries
+      .map(([label, count]) => {
+        const pct = Math.round((count / max) * 100);
+        return (
+          '<div class="breakdown-row">' +
+          '<div class="breakdown-label">' + escapeHtml(label) + "</div>" +
+          '<div class="breakdown-track"><div class="breakdown-fill" style="width:' + pct + '%"></div></div>' +
+          '<div class="breakdown-count">' + count + "</div>" +
+          "</div>"
+        );
+      })
+      .join("");
+  }
+
+  async function updateStatus(id, newStatus) {
+    clearError();
+    try {
+      const res = await fetch(API_BASE + "/leads/" + id, {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.detail || ("Server responded with " + res.status));
+      }
+      const updated = await res.json();
+      const idx = allLeads.findIndex((l) => l.id === id);
+      if (idx !== -1) allLeads[idx] = updated;
+      render();
+      loadStats();
+    } catch (err) {
+      showError("Could not update status: " + err.message);
+      render(); // revert the dropdown to the last known-good value
+    }
+  }
+
+  async function assignLead(id, agentName) {
+    clearError();
+    try {
+      const res = await fetch(API_BASE + "/leads/" + id + "/assign", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ assigned_to: agentName === "Unassigned" ? "" : agentName }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.detail || ("Server responded with " + res.status));
+      }
+      const updated = await res.json();
+      const idx = allLeads.findIndex((l) => l.id === id);
+      if (idx !== -1) allLeads[idx] = updated;
+      render();
+    } catch (err) {
+      showError("Could not assign lead: " + err.message);
+      render(); // revert the dropdown to the last known-good value
+    }
+  }
+
+  async function saveEdit(id, row) {
+    clearError();
+    const inputs = row.querySelectorAll(".edit-input");
+    const payload = {};
+    inputs.forEach((input) => {
+      payload[input.dataset.field] = input.value.trim();
+    });
+    try {
+      const res = await fetch(API_BASE + "/leads/" + id + "/edit", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.detail || ("Server responded with " + res.status));
+      }
+      const updated = await res.json();
+      const idx = allLeads.findIndex((l) => l.id === id);
+      if (idx !== -1) allLeads[idx] = updated;
+      editingId = null;
+      render();
+    } catch (err) {
+      showError("Could not save changes: " + err.message);
+    }
+  }
+
+  function matchesSearch(lead, query) {
+    if (!query) return true;
+    const haystack = [lead.name, lead.contact, lead.need].join(" ").toLowerCase();
+    return haystack.includes(query.toLowerCase());
+  }
+
+  function render() {
+    const query = searchInput.value.trim();
+    const filtered = allLeads.filter((l) => matchesSearch(l, query));
+
+    tbody.innerHTML = "";
+    emptyState.style.display = filtered.length === 0 ? "block" : "none";
+
+    filtered.forEach((lead) => {
+      const row = document.createElement("tr");
+      const isEditing = editingId === lead.id;
+
+      row.innerHTML =
+        '<td class="name-cell"></td>' +
+        "<td></td>" +
+        "<td></td>" +
+        "<td></td>" +
+        '<td><span class="lang-badge">' + escapeHtml(lead.language || "English") + "</span></td>" +
+        "<td></td>" +
+        "<td></td>" +
+        '<td class="muted">' + escapeHtml(formatDate(lead.created_at)) + "</td>" +
+        '<td class="actions-cell"></td>';
+
+      const fieldCells = {
+        name: row.children[0],
+        contact: row.children[1],
+        need: row.children[2],
+        timeline: row.children[3],
+      };
+      ["name", "contact", "need", "timeline"].forEach((field) => {
+        const cell = fieldCells[field];
+        if (isEditing) {
+          const input = document.createElement("input");
+          input.type = "text";
+          input.className = "edit-input";
+          input.dataset.field = field;
+          input.value = lead[field] || "";
+          cell.appendChild(input);
+        } else {
+          cell.textContent = lead[field] || "";
+        }
+      });
+
+      const statusCell = row.children[5];
+      const select = document.createElement("select");
+      select.className = "status-select " + statusClass(lead.status);
+      STATUSES.forEach((s) => {
+        const opt = document.createElement("option");
+        opt.value = s;
+        opt.textContent = s;
+        if (s === lead.status) opt.selected = true;
+        select.appendChild(opt);
+      });
+      select.addEventListener("change", () => updateStatus(lead.id, select.value));
+      statusCell.appendChild(select);
+
+      const assignCell = row.children[6];
+      const currentAgent = lead.assigned_to && lead.assigned_to.trim() ? lead.assigned_to : "Unassigned";
+      const assignSelect = document.createElement("select");
+      assignSelect.className = "assign-select " + (currentAgent === "Unassigned" ? "unassigned" : "assigned");
+      AGENTS.forEach((a) => {
+        const opt = document.createElement("option");
+        opt.value = a;
+        opt.textContent = a;
+        if (a === currentAgent) opt.selected = true;
+        assignSelect.appendChild(opt);
+      });
+      assignSelect.addEventListener("change", () => assignLead(lead.id, assignSelect.value));
+      assignCell.appendChild(assignSelect);
+
+      const actionsCell = row.children[8];
+      if (isEditing) {
+        const saveBtn = document.createElement("button");
+        saveBtn.className = "transcript-btn";
+        saveBtn.textContent = "Save";
+        saveBtn.addEventListener("click", () => saveEdit(lead.id, row));
+
+        const cancelBtn = document.createElement("button");
+        cancelBtn.className = "transcript-btn";
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", () => {
+          editingId = null;
+          render();
+        });
+
+        actionsCell.appendChild(saveBtn);
+        actionsCell.appendChild(cancelBtn);
+      } else {
+        const editBtn = document.createElement("button");
+        editBtn.className = "transcript-btn";
+        editBtn.textContent = "Edit";
+        editBtn.addEventListener("click", () => {
+          editingId = lead.id;
+          render();
+        });
+
+        const transcriptBtn = document.createElement("button");
+        transcriptBtn.className = "transcript-btn";
+        transcriptBtn.textContent = openTranscriptId === lead.id ? "Hide" : "Transcript";
+        transcriptBtn.addEventListener("click", () => {
+          openTranscriptId = openTranscriptId === lead.id ? null : lead.id;
+          render();
+        });
+
+        actionsCell.appendChild(editBtn);
+        actionsCell.appendChild(transcriptBtn);
+      }
+
+      tbody.appendChild(row);
+
+      if (openTranscriptId === lead.id && !isEditing) {
+        const tRow = document.createElement("tr");
+        tRow.className = "transcript-row";
+        const tCell = document.createElement("td");
+        tCell.colSpan = 9;
+        tCell.textContent = lead.transcript || "(no transcript recorded)";
+        tRow.appendChild(tCell);
+        tbody.appendChild(tRow);
+      }
+    });
+  }
+
+  function openAddModal() {
+    ["addName", "addContact", "addNeed", "addTimeline"].forEach((id) => {
+      document.getElementById(id).value = "";
+    });
+    document.getElementById("addLanguage").value = "English";
+    document.getElementById("addStatus").value = "new";
+    addModalOverlay.classList.add("open");
+  }
+
+  function closeAddModal() {
+    addModalOverlay.classList.remove("open");
+  }
+
+  async function submitAddLead() {
+    clearError();
+    const payload = {
+      name: document.getElementById("addName").value.trim(),
+      contact: document.getElementById("addContact").value.trim(),
+      need: document.getElementById("addNeed").value.trim(),
+      timeline: document.getElementById("addTimeline").value.trim(),
+      language: document.getElementById("addLanguage").value,
+      status: document.getElementById("addStatus").value,
+    };
+    if (!payload.name || !payload.contact || !payload.need || !payload.timeline) {
+      showError("Please fill in all fields before adding a lead.");
+      return;
+    }
+    try {
+      const res = await fetch(API_BASE + "/leads", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.detail || ("Server responded with " + res.status));
+      }
+      closeAddModal();
+      loadLeads();
+      loadStats();
+    } catch (err) {
+      showError("Could not add lead: " + err.message);
+    }
+  }
+
+  refreshBtn.addEventListener("click", () => { loadLeads(); loadStats(); });
+  searchInput.addEventListener("input", render);
+  addLeadBtn.addEventListener("click", openAddModal);
+  addCancelBtn.addEventListener("click", closeAddModal);
+  addSaveBtn.addEventListener("click", submitAddLead);
+  addModalOverlay.addEventListener("click", (e) => {
+    if (e.target === addModalOverlay) closeAddModal();
+  });
+
+  loadLeads();
+  loadStats();
+</script>
+
+</body>
+</html>

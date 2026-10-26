@@ -1,0 +1,49 @@
+id,description,saved_correctly,final_status,turns_used,used_fallback,field,verdict,expected,actual
+S1_all_info_upfront,All four fields given in a single opening message,True,lead_saved,2,False,name,PASS,Dritan,Dritan
+S1_all_info_upfront,All four fields given in a single opening message,True,lead_saved,2,False,contact,PASS,dritan@example.com,"dritan@example.com, +355691112222"
+S1_all_info_upfront,All four fields given in a single opening message,True,lead_saved,2,False,need,PASS,cleaning,Cleaning and checkup
+S1_all_info_upfront,All four fields given in a single opening message,True,lead_saved,2,False,timeline,PASS,month,Within the next month
+S2_gradual_info,Info volunteered gradually across several turns,True,lead_saved,5,False,name,PASS,Elira,Elira
+S2_gradual_info,Info volunteered gradually across several turns,True,lead_saved,5,False,contact,PASS,elira@example.com,elira@example.com
+S2_gradual_info,Info volunteered gradually across several turns,True,lead_saved,5,False,need,PASS,pain,General tooth pain consultation
+S2_gradual_info,Info volunteered gradually across several turns,True,lead_saved,5,False,timeline,PASS,two weeks,Next two weeks
+S3_vague_timeline,"User gives a vague, non-specific timeline",True,lead_saved,3,False,name,PASS,Marco,Marco
+S3_vague_timeline,"User gives a vague, non-specific timeline",True,lead_saved,3,False,contact,PASS,marco@example.com,marco@example.com
+S3_vague_timeline,"User gives a vague, non-specific timeline",True,lead_saved,3,False,need,PASS,whitening,Teeth whitening
+S3_vague_timeline,"User gives a vague, non-specific timeline",True,lead_saved,3,False,timeline,FAIL,month,Sometime this year
+S4_one_refusal_then_given,"User initially declines contact info, then provides it",True,lead_saved,4,False,name,PASS,Sara,Sara
+S4_one_refusal_then_given,"User initially declines contact info, then provides it",True,lead_saved,4,False,contact,PASS,sara@example.com,sara@example.com
+S4_one_refusal_then_given,"User initially declines contact info, then provides it",True,lead_saved,4,False,need,PASS,root canal,Root canal consultation
+S4_one_refusal_then_given,"User initially declines contact info, then provides it",True,lead_saved,4,False,timeline,PASS,week,Next week
+S5_two_refusals_declined,User refuses contact info twice - should end with contact='declined',True,lead_saved,3,False,name,PASS,Blerta,Blerta
+S5_two_refusals_declined,User refuses contact info twice - should end with contact='declined',True,lead_saved,3,False,contact,FAIL,declined,Not provided
+S5_two_refusals_declined,User refuses contact info twice - should end with contact='declined',True,lead_saved,3,False,need,PASS,braces,Braces for teeth straightening
+S5_two_refusals_declined,User refuses contact info twice - should end with contact='declined',True,lead_saved,3,False,timeline,REVIEW,(not auto-checked),Not specified
+S6_offtopic_as_need,Off-topic content given as the answer to the 'need' question,False,max_turns_reached,5,True,name,FAIL,Laura,
+S6_offtopic_as_need,Off-topic content given as the answer to the 'need' question,False,max_turns_reached,5,True,contact,FAIL,laura@example.com,
+S6_offtopic_as_need,Off-topic content given as the answer to the 'need' question,False,max_turns_reached,5,True,need,FAIL,cleaning,
+S6_offtopic_as_need,Off-topic content given as the answer to the 'need' question,False,max_turns_reached,5,True,timeline,FAIL,week,
+S7_offtopic_mid_flow,"Off-topic content given later, as the answer to a different pending question",True,lead_saved,3,False,name,PASS,Laura,Laura
+S7_offtopic_mid_flow,"Off-topic content given later, as the answer to a different pending question",True,lead_saved,3,False,contact,PASS,laura@example.com,laura@example.com
+S7_offtopic_mid_flow,"Off-topic content given later, as the answer to a different pending question",True,lead_saved,3,False,need,PASS,cleaning,cleaning
+S7_offtopic_mid_flow,"Off-topic content given later, as the answer to a different pending question",True,lead_saved,3,False,timeline,PASS,month,sometime next month
+S8_borderline_not_offtopic,A question that sounds tangential but is legitimately dental-related - guardrail should NOT block it,True,lead_saved,4,True,name,PASS,Enkel,Enkel
+S8_borderline_not_offtopic,A question that sounds tangential but is legitimately dental-related - guardrail should NOT block it,True,lead_saved,4,True,contact,PASS,enkel@example.com,enkel@example.com
+S8_borderline_not_offtopic,A question that sounds tangential but is legitimately dental-related - guardrail should NOT block it,True,lead_saved,4,True,need,PASS,checkup,Checkup
+S8_borderline_not_offtopic,A question that sounds tangential but is legitimately dental-related - guardrail should NOT block it,True,lead_saved,4,True,timeline,PASS,month,This month
+S9_italian_full_conversation,Full conversation conducted in Italian,True,lead_saved,3,False,name,PASS,Marco,Marco
+S9_italian_full_conversation,Full conversation conducted in Italian,True,lead_saved,3,False,contact,PASS,marco.it@example.com,marco.it@example.com
+S9_italian_full_conversation,Full conversation conducted in Italian,True,lead_saved,3,False,need,REVIEW,(not auto-checked),Pulizia dentale
+S9_italian_full_conversation,Full conversation conducted in Italian,True,lead_saved,3,False,timeline,REVIEW,(not auto-checked),Entro un mese
+S10_informal_name_then_full_name,User gives a nickname first; bot asks for a full name (accepted behavior) and receives one,True,lead_saved,3,False,name,PASS,Jonida,Jonida Krasniqi
+S10_informal_name_then_full_name,User gives a nickname first; bot asks for a full name (accepted behavior) and receives one,True,lead_saved,3,False,contact,PASS,j@example.com,j@example.com
+S10_informal_name_then_full_name,User gives a nickname first; bot asks for a full name (accepted behavior) and receives one,True,lead_saved,3,False,need,PASS,filling,Filling replacement
+S10_informal_name_then_full_name,User gives a nickname first; bot asks for a full name (accepted behavior) and receives one,True,lead_saved,3,False,timeline,PASS,weeks,Next few weeks
+S11_multiple_needs,User mentions more than one need in the same message,True,lead_saved,4,True,name,PASS,Ana,Ana
+S11_multiple_needs,User mentions more than one need in the same message,True,lead_saved,4,True,contact,PASS,ana@example.com,ana@example.com
+S11_multiple_needs,User mentions more than one need in the same message,True,lead_saved,4,True,need,PASS,cleaning,cleaning and whitening consultation
+S11_multiple_needs,User mentions more than one need in the same message,True,lead_saved,4,True,timeline,PASS,month,next month
+S12_rambling_single_message,"One long, unstructured message containing all info at once",True,lead_saved,1,False,name,PASS,Ana Koci,Ana Koci
+S12_rambling_single_message,"One long, unstructured message containing all info at once",True,lead_saved,1,False,contact,PASS,ana.koci@example.com,ana.koci@example.com
+S12_rambling_single_message,"One long, unstructured message containing all info at once",True,lead_saved,1,False,need,PASS,filling,Loose filling examination and repair
+S12_rambling_single_message,"One long, unstructured message containing all info at once",True,lead_saved,1,False,timeline,PASS,week,This week
